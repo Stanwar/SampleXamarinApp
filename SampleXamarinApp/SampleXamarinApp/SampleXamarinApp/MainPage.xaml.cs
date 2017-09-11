@@ -13,5 +13,15 @@ namespace SampleXamarinApp
         {
             InitializeComponent();
         }
+
+        public async void GotoGrid(object sender, EventArgs e){
+            NavigationPage gridPage = new NavigationPage(new Pages.GridPage());
+            await this.Navigation.PushAsync(gridPage);
+        }
+
+        public async void GotoViews(object sender, EventArgs e){
+            NavigationPage viewPage = new NavigationPage(new Pages.ListViewExample());
+            await this.Navigation.PushAsync(viewPage);
+        }
     }
 }
