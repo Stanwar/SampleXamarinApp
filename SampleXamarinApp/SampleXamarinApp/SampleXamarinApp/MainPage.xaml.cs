@@ -11,17 +11,13 @@ namespace SampleXamarinApp
     {
         public MainPage()
         {
+            NavigationPage.SetHasBackButton(this,true);
             InitializeComponent();
         }
 
-        public async void GotoGrid(object sender, EventArgs e){
-            NavigationPage gridPage = new NavigationPage(new Pages.GridPage());
-            await this.Navigation.PushAsync(gridPage);
-        }
-
-        public async void GotoViews(object sender, EventArgs e){
-            NavigationPage viewPage = new NavigationPage(new Pages.ListViewExample());
-            await this.Navigation.PushAsync(viewPage);
+        public void GotoLanding(object sender, EventArgs e){
+            NavigationPage landingPage = new NavigationPage(new Pages.LandingPage());
+            App.Current.MainPage = landingPage;
         }
     }
 }
