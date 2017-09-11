@@ -10,15 +10,13 @@ namespace SampleXamarinApp.Pages
         public ListViewExample()
         {
             ListView listView = new ListView();
-            List<TextCell> cells = new List<TextCell>();
-
-            for (var i = 0; i < 10;i++){
-                TextCell cell = new TextCell();
-                cell.Text = "Cell No. " + i;
-                cells.Add(cell);
-            }
-
-            listView.ItemsSource = cells;
+            listView.ItemsSource = new Data.Items().GetItemData();
+            listView.ItemTemplate = new DataTemplate(() => {
+                var cell = new TextCell();
+                cell.SetBinding(TextCell.TextProperty, "ItemName");
+                cell.SetBinding(TextCell.DetailProperty, "ItemId");
+                return cell;
+            });
 
             Content = listView;
         }
